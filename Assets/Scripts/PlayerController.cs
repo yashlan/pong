@@ -27,11 +27,10 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         Movement();
-        setMinMaxPosition();
+        SetMinMaxPosition();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -81,7 +80,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = velocity;
     }
 
-    void setMinMaxPosition()
+    void SetMinMaxPosition()
     {
         Vector3 position = transform.position;
 

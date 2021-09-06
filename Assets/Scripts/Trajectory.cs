@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Trajectory : MonoBehaviour
 {
@@ -10,18 +8,16 @@ public class Trajectory : MonoBehaviour
     private CircleCollider2D ballCollider;
     [SerializeField]
     private Rigidbody2D ballRigidbody;
-
     [SerializeField]
     private GameObject ballAtCollision;
-    bool drawBallAtCollision = false;
+    [SerializeField]
+    private bool drawBallAtCollision = false;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        this.enabled = false;
+        enabled = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Vector2 offsetHitPoint = new Vector2();
@@ -51,7 +47,6 @@ public class Trajectory : MonoBehaviour
                         drawBallAtCollision = true;
                     }
                 }
-
                 break;
 
                 if (drawBallAtCollision)

@@ -2,7 +2,6 @@
 
 public class GameManager : MonoBehaviour
 {
-
     [Header("Max Score")]
     [SerializeField]
     private int maxScore;
@@ -35,7 +34,6 @@ public class GameManager : MonoBehaviour
     public int MaxScore => maxScore;
 
 
-    // Untuk menampilkan GUI
     void OnGUI()
     {
         if (GUI.Button(new Rect(Screen.width / 2 - 60, Screen.height - 73, 120, 53), "TOGGLE\nDEBUG INFO"))
@@ -77,8 +75,8 @@ public class GameManager : MonoBehaviour
         }
 
 
-        GUI.Label(new Rect(Screen.width / 2 - 150 - 45, 20, 100, 100), "Player 1");
-        GUI.Label(new Rect(Screen.width / 2 - 150 - 25, 40, 100, 100), player1.Score.ToString());
+        GUI.Label(new Rect(Screen.width / 2 - 150 - 65, 20, 100, 100), "Player 1");
+        GUI.Label(new Rect(Screen.width / 2 - 150 - 45, 40, 100, 100), player1.Score.ToString());
         GUI.Label(new Rect(Screen.width / 2 + 150 + 45, 20, 100, 100), "Player 2");
         GUI.Label(new Rect(Screen.width / 2 + 150 + 65, 40, 100, 100), player2.Score.ToString());
 
@@ -92,12 +90,12 @@ public class GameManager : MonoBehaviour
 
         if (player1.Score == maxScore)
         {
-            GUI.Label(new Rect(Screen.width / 2 - 150, Screen.height / 2 - 10, 2000, 1000), "PLAYER ONE WINS");
+            GUI.Label(new Rect(Screen.width / 2 - 150, Screen.height / 2 - 10, 2000, 1000), "PLAYER 1 WINS");
             ball.SendMessage("ResetBall", null, SendMessageOptions.RequireReceiver);
         }
         else if (player2.Score == maxScore)
         {
-            GUI.Label(new Rect(Screen.width / 2 + 30, Screen.height / 2 - 10, 2000, 1000), "PLAYER TWO WINS");
+            GUI.Label(new Rect(Screen.width / 2 + 30, Screen.height / 2 - 10, 2000, 1000), "PLAYER 2 WINS");
             ball.SendMessage("ResetBall", null, SendMessageOptions.RequireReceiver);
         }
     }
