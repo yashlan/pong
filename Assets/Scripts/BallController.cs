@@ -1,15 +1,9 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
-    private float firstSpeed = 0;
-    private bool GetFirstSpeed = false;
-
-    [SerializeField]
-    private float xInitialForce;
-    [SerializeField]
-    private float yInitialForce;
+    private const float xInitialForce = 80f;
+    private const float yInitialForce = 15f;
 
     private Rigidbody2D rb;
     private Vector2 trajectoryOrigin;
@@ -30,41 +24,22 @@ public class BallController : MonoBehaviour
     void RestartGame()
     {
         ResetBall();
-        StartCoroutine(PushBall(1.75f));
+        Invoke(nameof(PushBall), 2f);
     }
 
     void ResetBall() => rb.velocity = transform.position = Vector2.zero;
 
-    IEnumerator PushBall(float time)
+    void PushBall()
     {
-        yield return new WaitForSeconds(time);
-        float yRandomInitialForce = Random.Range(-yInitialForce, yInitialForce);
         float randomDirection = Random.Range(0, 2);
 
         if (randomDirection < 1.0f)
         {
-            rb.AddForce(new Vector2(-xInitialForce, yRandomInitialForce));
+            rb.AddForce(new Vector2(-xInitialForce, yInitialForce));
         }
         else
         {
-            rb.AddForce(new Vector2(xInitialForce, yRandomInitialForce));
+            rb.AddForce(new Vector2(xInitialForce, yInitialForce));
         }
-        yield return new WaitForSeconds(0.25f);
-        firstSpeed = rb.velocity.magnitude;
-        GetFirstSpeed = true;
-        yield break;
-    }
-
-    void ForceConstantSpeed()
-    {
-        if (rb.velocity.magnitude != firstSpeed && GetFirstSpeed)
-        {
-            rb.velocity = rb.velocity.normalized * firstSpeed;
-        }
-    }
-
-    void Update()
-    {
-        ForceConstantSpeed();
     }
 }

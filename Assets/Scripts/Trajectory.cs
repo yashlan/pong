@@ -48,17 +48,17 @@ public class Trajectory : MonoBehaviour
                     }
                 }
                 break;
-
-                if (drawBallAtCollision)
-                {
-                    ballAtCollision.transform.position = offsetHitPoint;
-                    ballAtCollision.SetActive(true);
-                }
-                else
-                {
-                    ballAtCollision.SetActive(false);
-                }
             }
+        }
+
+        if (drawBallAtCollision)
+        {
+            ballAtCollision.transform.position = offsetHitPoint;
+            ballAtCollision.SetActive(true);
+        }
+        else
+        {
+            ballAtCollision.SetActive(false);
         }
     }
 }
